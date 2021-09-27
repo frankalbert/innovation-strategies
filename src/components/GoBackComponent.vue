@@ -1,12 +1,17 @@
 <template>
     <div>
-        <h5 class="link" @click="$router.go(-1)">Go back</h5>
+        <h5 class="link" @click="$router.push({ name: routeName })">Go back</h5>
     </div>
 </template>
 
 <script>
 export default {
     name: "GoBackComponent",
+    props: {
+        routeName: {
+            type: String,
+        },
+    },
 };
 </script>
 

@@ -7,7 +7,7 @@
                 class="list__item"
             >
                 <router-link
-                    :to="{ name: 'FichaPeople', id: index + 1 }"
+                    :to="{ name: routeName, params: { id: index + 1 } }"
                     class="list__item__link"
                 >
                     {{ item.name }}
@@ -28,6 +28,9 @@ export default {
         list: {
             type: Array,
             default: () => [],
+        },
+        routeName: {
+            type: String,
         },
     },
 };

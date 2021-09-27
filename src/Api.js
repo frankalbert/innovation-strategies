@@ -2,7 +2,7 @@ const Api = {
     get: (urlApi) => fetch(urlApi)
         .then((resp) => resp.json())
         .then((resp) => {
-            return resp.results;
+            return resp;
         })
         .catch(error => {
             throw new Error(error);

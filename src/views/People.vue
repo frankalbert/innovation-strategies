@@ -5,10 +5,13 @@
         </div>
         <div class="col-12">
             <InputComponent v-model="search" />
-            <ItemListComponent :list="getPeopleBySearch" />
+            <ItemListComponent
+                :list="getPeopleBySearch"
+                routeName="FichaPeople"
+            />
         </div>
         <div class="col-12">
-            <GoBackComponent />
+            <GoBackComponent routeName="Home" />
         </div>
     </div>
 </template>
@@ -50,7 +53,8 @@ export default {
         async getListInfo() {
             try {
                 this.setShowLoading(true);
-                this.people = await Api.get(`${this.urlApi}people/`);
+                const people = await Api.get(`${this.urlApi}people/`);
+                this.people = people.results;
                 this.setShowLoading(false);
             } catch (error) {
                 console.error(error);

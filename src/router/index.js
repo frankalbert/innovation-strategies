@@ -16,6 +16,18 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "people" */ "../views/People.vue"),
   },
+  {
+    path: "/ficha-people/:id",
+    name: "FichaPeople",
+    // props: true,
+    component: () =>
+      import(/* webpackChunkName: "ficha-people" */ "../views/FichaPeople.vue"),
+  },
+  {
+    path: "*",
+    name: "404",
+    redirect: { name: 'Home' },
+  },
 ];
 
 const router = new VueRouter({

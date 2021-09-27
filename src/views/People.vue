@@ -49,7 +49,11 @@ export default {
         },
     },
     methods: {
-        ...mapMutations(["setShowLoading"]),
+        ...mapMutations([
+            "setShowLoading",
+            "setInfoModalError",
+            "setShowModalError",
+        ]),
         async getListInfo() {
             try {
                 this.setShowLoading(true);
@@ -57,7 +61,13 @@ export default {
                 this.people = people.results;
                 this.setShowLoading(false);
             } catch (error) {
-                console.error(error);
+                this.setInfoModalError({
+                    title: "Ups Error",
+                    body: error.message,
+                });
+                this.setShowModalError(true);
+            } finally {
+                this.setShowLoading(false);
             }
         },
     },

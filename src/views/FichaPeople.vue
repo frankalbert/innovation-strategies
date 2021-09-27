@@ -36,21 +36,29 @@ export default {
         ...mapState(["urlApi"]),
     },
     methods: {
-        ...mapMutations(["setShowLoading"]),
+        ...mapMutations([
+            "setShowLoading",
+            "setInfoModalError",
+            "setShowModalError",
+        ]),
         async getListInfo() {
             try {
                 this.setShowLoading(true);
                 this.people = await Api.get(`${this.urlApi}people/${this.id}/`);
-                this.setShowLoading(false);
             } catch (error) {
-                console.error(error);
+                this.setInfoModalError({
+                    title: "Ups Error",
+                    body: error.message,
+                });
+                this.setShowModalError(true);
+            } finally {
+                this.setShowLoading(false);
             }
         },
     },
     watch: {
         $route: {
             handler(newValue) {
-                console.log(newValue.params.id);
                 this.id = newValue.params.id;
                 this.getListInfo();
             },

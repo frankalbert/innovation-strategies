@@ -1,13 +1,12 @@
 <template>
     <div>
         <ul class="list">
-            <li
-                v-for="(item, index) in list"
-                :key="item.created"
-                class="list__item"
-            >
+            <li v-for="item in list" :key="item.created" class="list__item">
                 <router-link
-                    :to="{ name: routeName, params: { id: index + 1 } }"
+                    :to="{
+                        name: routeName,
+                        params: { id: getIdByUrl(item.url) },
+                    }"
                     class="list__item__link"
                 >
                     {{ item.name }}
@@ -31,6 +30,13 @@ export default {
         },
         routeName: {
             type: String,
+        },
+    },
+    methods: {
+        // Puesto que no viene un "id" en elemento del array, lo extraigo de la url que viene en cada item: "url": "https://swapi.dev/api/people/3/", donde 3 es el id de esta persona
+        getIdByUrl(url) {
+            const urlSplit = url.split("/");
+            return urlSplit[urlSplit.length - 2] || "";
         },
     },
 };

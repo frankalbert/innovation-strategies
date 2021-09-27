@@ -1,7 +1,8 @@
 <template>
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 d-flex align-items-center">
             <HeaderComponent title="People" />
+            <OrderComponent :order="order" @changeOrder="changeOrder" />
         </div>
         <div class="col-12">
             <InputComponent v-model="search" />
@@ -26,6 +27,7 @@ import HeaderComponent from "../components/HeaderComponent.vue";
 import InputComponent from "../components/InputComponent.vue";
 import ItemListComponent from "../components/ItemListComponent.vue";
 import GoBackComponent from "../components/GoBackComponent.vue";
+import OrderComponent from "../components/OrderComponent.vue";
 import { mapState, mapMutations } from "vuex";
 export default {
     name: "People",
@@ -34,6 +36,7 @@ export default {
         InputComponent,
         ItemListComponent,
         GoBackComponent,
+        OrderComponent,
     },
     data() {
         return {
@@ -42,6 +45,7 @@ export default {
             currentPage: 1,
             itemPerPage: 10,
             maxPage: 8,
+            order: null,
         };
     },
     created() {
@@ -50,9 +54,28 @@ export default {
     computed: {
         ...mapState(["urlApi"]),
         getPeopleBySearch() {
-            return this.people.filter((item) =>
-                item.name.toLowerCase().includes(this.search.toLowerCase())
-            );
+            return this.people
+                .filter((item) => {
+                    return item.name
+                        .toLowerCase()
+                        .includes(this.search.toLowerCase());
+                })
+                .sort((a, b) => {
+                    const transformA = a.name.toUpperCase();
+                    const transformB = b.name.toUpperCase();
+
+                    let typeComparation = 0;
+                    if (transformA > transformB) {
+                        typeComparation = 1;
+                    } else if (transformA < transformB) {
+                        typeComparation = -1;
+                    }
+                    return this.order === 1
+                        ? typeComparation
+                        : this.order === 2
+                        ? typeComparation * -1
+                        : 0;
+                });
         },
     },
     methods: {
@@ -87,6 +110,13 @@ export default {
         prevPage() {
             this.currentPage--;
             this.getListInfo();
+        },
+        changeOrder(value) {
+            if (this.order !== value) {
+                this.order = value;
+            } else {
+                this.order = null;
+            }
         },
     },
 };

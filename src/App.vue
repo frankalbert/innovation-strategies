@@ -1,21 +1,24 @@
 <template>
     <div class="container">
         <LoadingComponent v-if="showLoading" />
+        <ModalErrorComponent v-if="showModalError" />
         <router-view> </router-view>
     </div>
 </template>
 
 <script>
 import LoadingComponent from "./components/LoadingComponent.vue";
+import ModalErrorComponent from "./components/ModalErrorComponent.vue";
 import { mapState } from "vuex";
 
 export default {
     name: "App",
     components: {
         LoadingComponent,
+        ModalErrorComponent,
     },
     computed: {
-        ...mapState(["showLoading"]),
+        ...mapState(["showLoading", "showModalError"]),
     },
 };
 </script>
@@ -139,6 +142,46 @@ body {
         &-5 {
             padding-left: 8px;
             padding-right: 8px;
+        }
+    }
+    &t {
+        &-0 {
+            padding-top: 0px;
+        }
+        &-1 {
+            padding-top: 40px;
+        }
+        &-2 {
+            padding-top: 32px;
+        }
+        &-3 {
+            padding-top: 24px;
+        }
+        &-4 {
+            padding-top: 16px;
+        }
+        &-5 {
+            padding-top: 8px;
+        }
+    }
+    &b {
+        &-0 {
+            padding-bottom: 0px;
+        }
+        &-1 {
+            padding-bottom: 40px;
+        }
+        &-2 {
+            padding-bottom: 32px;
+        }
+        &-3 {
+            padding-bottom: 24px;
+        }
+        &-4 {
+            padding-bottom: 16px;
+        }
+        &-5 {
+            padding-bottom: 8px;
         }
     }
 }

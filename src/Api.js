@@ -5,7 +5,7 @@ const Api = {
             return resp;
         })
         .catch(error => {
-            throw new Error(error);
+            throw error;
         })
 }
 

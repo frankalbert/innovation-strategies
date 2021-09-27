@@ -13,10 +13,17 @@
                 </router-link>
             </li>
         </ul>
+        <PaginationComponent
+            :currentPage="currentPage"
+            :maxPage="maxPage"
+            @nextPage="$emit('nextPage')"
+            @prevPage="$emit('prevPage')"
+        />
     </div>
 </template>
 
 <script>
+import PaginationComponent from "./PaginationComponent.vue";
 export default {
     name: "ItemListComponent",
     props: {
@@ -31,6 +38,15 @@ export default {
         routeName: {
             type: String,
         },
+        currentPage: {
+            type: Number,
+        },
+        maxPage: {
+            type: Number,
+        },
+    },
+    components: {
+        PaginationComponent,
     },
     methods: {
         // Puesto que no viene un "id" en elemento del array, lo extraigo de la url que viene en cada item: "url": "https://swapi.dev/api/people/3/", donde 3 es el id de esta persona

@@ -8,6 +8,10 @@
             <ItemListComponent
                 :list="getPeopleBySearch"
                 routeName="FichaPeople"
+                :currentPage="currentPage"
+                :maxPage="maxPage"
+                @nextPage="nextPage"
+                @prevPage="prevPage"
             />
         </div>
         <div class="col-12">
@@ -35,6 +39,9 @@ export default {
         return {
             people: [],
             search: "",
+            currentPage: 1,
+            itemPerPage: 10,
+            maxPage: 8,
         };
     },
     created() {
@@ -57,8 +64,11 @@ export default {
         async getListInfo() {
             try {
                 this.setShowLoading(true);
-                const people = await Api.get(`${this.urlApi}people/`);
-                this.people = people.results;
+                const people = await Api.get(
+                    `${this.urlApi}people/?page=${this.currentPage}`
+                );
+                this.people = people.results || [];
+                this.maxPage = Math.ceil(people.count / this.itemPerPage);
                 this.setShowLoading(false);
             } catch (error) {
                 this.setInfoModalError({
@@ -69,6 +79,14 @@ export default {
             } finally {
                 this.setShowLoading(false);
             }
+        },
+        nextPage() {
+            this.currentPage++;
+            this.getListInfo();
+        },
+        prevPage() {
+            this.currentPage--;
+            this.getListInfo();
         },
     },
 };

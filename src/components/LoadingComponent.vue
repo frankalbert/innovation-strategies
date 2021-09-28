@@ -48,7 +48,7 @@ export default {};
                 width: 6px;
                 height: 18px;
                 border-radius: 20%;
-                background: #fff;
+                background: $colorWhite;
             }
             &:nth-child(1) {
                 transform: rotate(0deg);

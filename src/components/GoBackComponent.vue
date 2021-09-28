@@ -1,6 +1,8 @@
 <template>
     <div>
-        <h5 class="link" @click="$router.push({ name: routeName })">Go back</h5>
+        <h5 class="link h5" @click="$router.push({ name: routeName })">
+            Go back
+        </h5>
     </div>
 </template>
 
@@ -17,8 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .link {
-    font-size: 18px;
-    color: #212121;
+    color: $colorBlack;
     cursor: pointer;
 }
 </style>

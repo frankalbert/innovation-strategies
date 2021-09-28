@@ -52,14 +52,13 @@ export default {
     &__c {
         width: 96%;
         max-width: 400px;
-        background: #fff;
+        background: $colorWhite;
     }
     &__body {
         text-align: center;
         .h5 {
             margin: 0;
             text-align: center;
-            font-size: 22px;
         }
         .p {
             font-size: 17px;
@@ -69,12 +68,12 @@ export default {
         .button {
             padding: 14px 16px;
             width: 100%;
-            background-color: #f65656;
-            color: #fff;
+            background-color: $colorRed;
+            color: $colorWhite;
             border: none;
             cursor: pointer;
             &:hover {
-                background-color: #ec3434;
+                background-color: $colorRed;
             }
         }
     }

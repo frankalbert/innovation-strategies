@@ -1,7 +1,7 @@
 <template>
     <div>
         <ul class="list">
-            <li v-for="item in list" :key="item.created" class="list__item">
+            <li v-for="item in list" :key="item.created" class="list__item h5">
                 <router-link
                     :to="{
                         name: routeName,
@@ -63,12 +63,11 @@ export default {
     list-style: none;
     padding: 0;
     &__item {
-        font-size: 18px;
         margin-bottom: 12px;
         &__link {
             position: relative;
             padding-bottom: 4px;
-            color: #212121;
+            color: $colorBlack;
             text-decoration: none;
             &::before {
                 content: "";
@@ -77,7 +76,7 @@ export default {
                 left: 0;
                 width: 0;
                 height: 2px;
-                background-color: #212121;
+                background-color: $colorBlack;
                 transition: width 0.5s;
             }
             &:hover {

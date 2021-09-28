@@ -29,9 +29,9 @@ export default {
 <style lang="scss" scoped>
 .input {
     padding: 4px 8px;
-    border: 1px solid #c7c7c7;
+    border: 1px solid $colorGrey;
     &:focus {
-        border: 1px solid #c7c7c7;
+        border: 1px solid $colorGrey;
         outline: none;
     }
 }

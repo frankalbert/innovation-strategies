@@ -66,17 +66,17 @@ export default {
         padding: 6px;
         min-width: 40px;
         height: 40px;
-        border: 1px solid #212121;
+        border: 1px solid $colorBlack;
         cursor: pointer;
         &.active,
         &:hover {
             &:not(.disabled) {
-                background-color: #f65656;
-                color: #fff;
+                background-color: $colorRed;
+                color: $colorWhite;
             }
         }
         &.disabled {
-            background-color: #c7c7c7;
+            background-color: $colorGrey;
             position: relative;
             pointer-events: none;
             &::before {

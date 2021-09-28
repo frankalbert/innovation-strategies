@@ -1,7 +1,7 @@
 <template>
     <div class="row">
-        <div class="col-12 d-flex align-items-center">
-            <HeaderComponent title="People" />
+        <div class="col-12 d-flex align-items-center mb-3">
+            <HeaderComponent title="People" class="my-0" />
             <OrderComponent :order="order" @changeOrder="changeOrder" />
         </div>
         <div class="col-12">

@@ -35,6 +35,18 @@ const routes = [
       import(/* webpackChunkName: "ficha-starships" */ "../views/FichaStarships.vue"),
   },
   {
+    path: "/planets",
+    name: "Planets",
+    component: () =>
+      import(/* webpackChunkName: "planets" */ "../views/Planets.vue"),
+  },
+  {
+    path: "/ficha-planets/:id",
+    name: "FichaPlanets",
+    component: () =>
+      import(/* webpackChunkName: "ficha-planets" */ "../views/FichaPlanets.vue"),
+  },
+  {
     path: "*",
     name: "404",
     redirect: { name: 'Home' },

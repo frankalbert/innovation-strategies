@@ -1,32 +1,32 @@
 <template>
     <div class="row">
         <div class="col-12">
-            <HeaderComponent :title="people.name" />
+            <HeaderComponent :title="info.name" />
         </div>
         <div class="col-12">
-            <h3 class="h4">Height: {{ people.height }} cm</h3>
-            <h3 class="h4">Mass: {{ people.mass }}</h3>
-            <h3 class="h4">Hair Color: {{ people.hair_color }}</h3>
-            <h3 class="h4">Eye Color: {{ people.eye_color }}</h3>
+            <h3 class="h4">Rotation Period: {{ info.rotation_period }}</h3>
+            <h3 class="h4">Orbital Period: {{ info.orbital_period }}</h3>
+            <h3 class="h4">Gravity: {{ info.gravity }}</h3>
+            <h3 class="h4">Population: {{ info.population }}</h3>
         </div>
         <div class="col-12">
-            <GoBackComponent routeName="People" />
+            <GoBackComponent routeName="Planets" />
         </div>
     </div>
 </template>
 
 <script>
 import Api from "@/Api.js";
-import { watchMixin } from "../components/Mixins";
+import { watchMixin } from "../components/Mixins.js";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import GoBackComponent from "../components/GoBackComponent.vue";
 import { mapState, mapMutations } from "vuex";
 export default {
-    name: "FichaPeople",
+    name: "FichaPlanets",
     data() {
         return {
             id: null,
-            people: {},
+            info: {},
         };
     },
     components: {
@@ -45,7 +45,7 @@ export default {
         async getListInfo() {
             try {
                 this.setShowLoading(true);
-                this.people = await Api.get(`${this.urlApi}people/${this.id}/`);
+                this.info = await Api.get(`${this.urlApi}planets/${this.id}/`);
             } catch (error) {
                 this.setInfoModalError({
                     title: "Ups Error",

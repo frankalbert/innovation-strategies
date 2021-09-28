@@ -4,7 +4,7 @@
             <HeaderComponent :title="info.name" />
         </div>
         <div class="col-12">
-            <h3 class="h4">Model: {{ info.model }} cm</h3>
+            <h3 class="h4">Model: {{ info.model }}</h3>
             <h3 class="h4">Manufacturer: {{ info.manufacturer }}</h3>
             <h3 class="h4">Cost In Credits: {{ info.cost_in_credits }}</h3>
             <h3 class="h4">Cargo Capacity: {{ info.cargo_capacity }}</h3>
@@ -17,6 +17,7 @@
 
 <script>
 import Api from "@/Api.js";
+import { watchMixin } from "../components/Mixins";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import GoBackComponent from "../components/GoBackComponent.vue";
 import { mapState, mapMutations } from "vuex";
@@ -58,15 +59,7 @@ export default {
             }
         },
     },
-    watch: {
-        $route: {
-            handler(newValue) {
-                this.id = newValue.params.id;
-                this.getListInfo();
-            },
-            immediate: true,
-        },
-    },
+    mixins: [watchMixin],
 };
 </script>
 

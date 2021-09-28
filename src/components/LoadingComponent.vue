@@ -29,7 +29,7 @@ export default {};
     right: 0;
     left: 0;
     z-index: 2;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.85);
     cursor: not-allowed;
     &__c {
         display: inline-block;

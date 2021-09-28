@@ -19,9 +19,20 @@ const routes = [
   {
     path: "/ficha-people/:id",
     name: "FichaPeople",
-    // props: true,
     component: () =>
       import(/* webpackChunkName: "ficha-people" */ "../views/FichaPeople.vue"),
+  },
+  {
+    path: "/starships",
+    name: "Starships",
+    component: () =>
+      import(/* webpackChunkName: "starships" */ "../views/Starships.vue"),
+  },
+  {
+    path: "/ficha-starships/:id",
+    name: "FichaStarships",
+    component: () =>
+      import(/* webpackChunkName: "ficha-starships" */ "../views/FichaStarships.vue"),
   },
   {
     path: "*",

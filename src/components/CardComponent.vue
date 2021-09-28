@@ -1,6 +1,6 @@
 <template>
     <router-link :to="{ name: card.urlName }" :title="card.name" class="card">
-        <h4 class="card__title">{{ card.name }}</h4>
+        <h4 class="card__title h5">{{ card.name }}</h4>
     </router-link>
 </template>
 
@@ -21,16 +21,15 @@ export default {
     display: block;
     text-decoration: none;
     margin-bottom: 16px;
-    background-color: #fff;
+    background-color: $colorWhite;
     cursor: pointer;
     &:hover {
-        background-color: #f7f7f7;
+        background-color: $colorGrey2;
     }
     &__title {
         margin: 0;
         padding: 8px 16px 24px;
-        font-size: 18px;
-        color: #212121;
+        color: $colorBlack;
     }
 }
 </style>

@@ -23,6 +23,7 @@
 
 <script>
 import Api from "@/Api.js";
+import { filterAndOrderArrayByProps } from "@/helpers";
 import HeaderComponent from "../components/HeaderComponent.vue";
 import InputComponent from "../components/InputComponent.vue";
 import ItemListComponent from "../components/ItemListComponent.vue";
@@ -54,28 +55,12 @@ export default {
     computed: {
         ...mapState(["urlApi"]),
         getPeopleBySearch() {
-            return this.people
-                .filter((item) => {
-                    return item.name
-                        .toLowerCase()
-                        .includes(this.search.toLowerCase());
-                })
-                .sort((a, b) => {
-                    const transformA = a.name.toUpperCase();
-                    const transformB = b.name.toUpperCase();
-
-                    let typeComparation = 0;
-                    if (transformA > transformB) {
-                        typeComparation = 1;
-                    } else if (transformA < transformB) {
-                        typeComparation = -1;
-                    }
-                    return this.order === 1
-                        ? typeComparation
-                        : this.order === 2
-                        ? typeComparation * -1
-                        : 0;
-                });
+            return filterAndOrderArrayByProps({
+                arrayToSearch: this.people,
+                search: this.search,
+                searchByProp: "name",
+                order: this.order,
+            });
         },
     },
     methods: {

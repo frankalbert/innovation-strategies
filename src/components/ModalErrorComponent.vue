@@ -48,7 +48,7 @@ export default {
     right: 0;
     left: 0;
     z-index: 2;
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.85);
     &__c {
         width: 96%;
         max-width: 400px;

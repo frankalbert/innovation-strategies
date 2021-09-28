@@ -4,10 +4,10 @@
             <HeaderComponent :title="people.name" />
         </div>
         <div class="col-12">
-            <h3>Height: {{ people.height }} cm</h3>
-            <h3>Mass: {{ people.mass }}</h3>
-            <h3>Hair Color: {{ people.hair_color }}</h3>
-            <h3>Eye Color: {{ people.eye_color }}</h3>
+            <h3 class="h4">Height: {{ people.height }} cm</h3>
+            <h3 class="h4">Mass: {{ people.mass }}</h3>
+            <h3 class="h4">Hair Color: {{ people.hair_color }}</h3>
+            <h3 class="h4">Eye Color: {{ people.eye_color }}</h3>
         </div>
         <div class="col-12">
             <GoBackComponent routeName="People" />

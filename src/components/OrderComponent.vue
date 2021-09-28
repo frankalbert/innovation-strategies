@@ -43,7 +43,7 @@ export default {
         margin: 8px;
         cursor: pointer;
         &.active {
-            color: #f65656;
+            color: $colorRed;
         }
         &--asc {
             transform: rotate(270deg);

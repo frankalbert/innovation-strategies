@@ -18,10 +18,10 @@ export default {
 
 <style lang="scss" scoped>
 .header {
-    margin: 30px 0 20px;
+    margin: 0 0 20px 0;
     .title {
         margin: 0;
-        color: #212121;
+        color: $colorBlack;
     }
 }
 </style>

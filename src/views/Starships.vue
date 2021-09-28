@@ -7,7 +7,7 @@
         <div class="col-12">
             <InputComponent v-model="search" />
             <ItemListComponent
-                :list="getPeopleBySearch"
+                :list="getStarshipsBySearch"
                 routeName="FichaStarships"
                 :currentPage="currentPage"
                 :maxPage="maxPage"
@@ -41,7 +41,7 @@ export default {
     },
     data() {
         return {
-            people: [],
+            starships: [],
             search: "",
             currentPage: 1,
             itemPerPage: 10,
@@ -54,9 +54,9 @@ export default {
     },
     computed: {
         ...mapState(["urlApi"]),
-        getPeopleBySearch() {
+        getStarshipsBySearch() {
             return filterAndOrderArrayByProps({
-                arrayToSearch: this.people,
+                arrayToSearch: this.starships,
                 search: this.search,
                 searchByProp: "name",
                 order: this.order,
@@ -72,11 +72,11 @@ export default {
         async getListInfo() {
             try {
                 this.setShowLoading(true);
-                const people = await Api.get(
+                const starships = await Api.get(
                     `${this.urlApi}starships/?page=${this.currentPage}`
                 );
-                this.people = people.results || [];
-                this.maxPage = Math.ceil(people.count / this.itemPerPage);
+                this.starships = starships.results || [];
+                this.maxPage = Math.ceil(starships.count / this.itemPerPage);
                 this.setShowLoading(false);
             } catch (error) {
                 this.setInfoModalError({

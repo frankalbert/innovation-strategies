@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from '@/views/Home';
+import Home from "@/views/Home";
 
 Vue.use(VueRouter);
 
@@ -32,7 +32,9 @@ const routes = [
     path: "/ficha-starships/:id",
     name: "FichaStarships",
     component: () =>
-      import(/* webpackChunkName: "ficha-starships" */ "../views/FichaStarships.vue"),
+      import(
+        /* webpackChunkName: "ficha-starships" */ "../views/FichaStarships.vue"
+      ),
   },
   {
     path: "/planets",
@@ -44,12 +46,14 @@ const routes = [
     path: "/ficha-planets/:id",
     name: "FichaPlanets",
     component: () =>
-      import(/* webpackChunkName: "ficha-planets" */ "../views/FichaPlanets.vue"),
+      import(
+        /* webpackChunkName: "ficha-planets" */ "../views/FichaPlanets.vue"
+      ),
   },
   {
     path: "*",
     name: "404",
-    redirect: { name: 'Home' },
+    redirect: { name: "Home" },
   },
 ];
 
